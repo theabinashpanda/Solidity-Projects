@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
+import "lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 // import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "openzeppelin-contracts/contracts/access/Ownable.sol";
+import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "lib/openzeppelin-contracts/contracts/utils/Strings.sol";
 
 // contract Spacebear is ERC721, ERC721URIStorage, Ownable {
 contract Spacebear is ERC721, Ownable {
@@ -42,7 +43,7 @@ contract Spacebear is ERC721, Ownable {
         returns (string memory)
     {
         // return super.tokenURI(tokenId);
-        return string(abi.encodePacked(_baseURI(),"_",(tokenId+1),".json"));
+        return string(abi.encodePacked(_baseURI(),"spacebear_",Strings.toString(tokenId+1),".json"));
     }
 
     // function supportsInterface(bytes4 interfaceId)
